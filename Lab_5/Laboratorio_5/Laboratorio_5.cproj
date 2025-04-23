@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>Prelaboratorio_5</AssemblyName>
-    <Name>Prelaboratorio_5</Name>
-    <RootNamespace>Prelaboratorio_5</RootNamespace>
+    <AssemblyName>Laboratorio_5</AssemblyName>
+    <Name>Laboratorio_5</Name>
+    <RootNamespace>Laboratorio_5</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -136,15 +136,22 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PWM1A\PWM1.c">
+    <Compile Include="PWM1\PWM1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PWM1A\PWM1.h">
+    <Compile Include="PWM1\PWM1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PWM2\PWM1B.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PWM2\PWM1B.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PWM1A" />
+    <Folder Include="PWM2" />
+    <Folder Include="PWM1" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

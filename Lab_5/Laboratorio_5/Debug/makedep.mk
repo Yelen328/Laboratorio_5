@@ -4,5 +4,7 @@
 
 main.c
 
-PWM1A\PWM1.c
+PWM1\PWM1.c
+
+PWM2\PWM1B.c
 
