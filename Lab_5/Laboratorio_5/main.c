@@ -86,42 +86,22 @@ void INIT_TMR0(){
 
 ISR(ADC_vect)
 {
-	switch (POT){
-		case 1:
-			ADC1=ADCH;
-			dutyCycle1 = (ADC1 * (225.0 / 255.0)) + 60.0;
-			updateDutyCycle1(dutyCycle1); // Actualizar PWM
-			break;
-			
-		case 2:
-			ADC2=ADCH;
-			dutyCycle2 = (ADC2 * (225.0 / 255.0)) + 60.0;
-			updateDutyCycle1B(dutyCycle2); // Actualizar PWM
-			break;
-			
-		default:
-		break;
-			
-	}
-	
-	//uint8_t temporal = ADCH;
-	// Mapear ADC (0-255) a dutyCycle
-	//PORTB= temporal; 
-	 
-	ADCSRA |= (1 << ADSC);	//Iniciar nueva conversión
-}
-
-ISR (TIMER0_OVF_vect){
 	POT++;
 	
 	switch (POT){
 		case 1:
 			ADMUX &= ~(1<<MUX0);  // Limpiar bit MUX0 primero
 			ADMUX |= (1<<MUX2) | (1<<MUX1);//Selección de canal Bit 6 del puerto C
+			ADC1=ADCH;
+			dutyCycle1 = (ADC1 * (188.0 / 255.0)) + 69.0;
+			updateDutyCycle1(dutyCycle1); // Actualizar PWM
 			break;
 		
 		case 2:
 			ADMUX |= (1<<MUX2)|(1<<MUX1)|(1<<MUX0); //Selección de canal Bit 7 del puerto C
+			ADC2=ADCH;
+			dutyCycle2 = (ADC2 * (188.0 / 255.0)) + 69.0;
+			updateDutyCycle1B(dutyCycle2); // Actualizar PWM
 			break;
 		
 		case 3:
@@ -131,6 +111,9 @@ ISR (TIMER0_OVF_vect){
 		default:
 			break;
 	}
-	_delay_us(20);  // Pequeño delay para estabilización
+	 
+	ADCSRA |= (1 << ADSC);	//Iniciar nueva conversión
 }
+
+
 
