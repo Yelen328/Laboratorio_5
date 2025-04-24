@@ -10,7 +10,7 @@
 #define PWM_MAN_H_
 
 void INIT_TMR0();
-void  updateDutyCycle_3(uint8_t duty);
+void  DutyCycleLED(uint8_t duty);
 
 
 #endif /* PWM_MAN_H_ */

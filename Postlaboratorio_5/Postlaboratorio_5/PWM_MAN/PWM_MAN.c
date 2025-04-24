@@ -18,20 +18,20 @@ void INIT_TMR0(){
 	//Configurar el timer 0 en modo normal
 	TCCR0A = 0x00;
 	TCCR0B = (1 << CS01) | (1 << CS00);   //Prescaler 64
-	TCNT0 = 0xB1;	//Desborde cada 0.5ms
+	TCNT0 = 255;	
 	TIMSK0 = (1 << TOIE0);	//Habilitar interrupciones del timer 0
 }
 
-void  updateDutyCycle_3(uint8_t duty){
-	OCR1B = duty;
+void  DutyCycleLED(uint8_t duty){
+	limite = duty;
 }
 		
 	
 ISR(TIMER0_OVF_vect){
-	TCNT0 = 0xB1;	//Desborde cada 0.5ms
 	if (CONT >= limite)
 	{
-		PORTD=0;
+		PORTD &= ~(1 << PORTD6);  
+
 	}
 	
 	else{
@@ -39,4 +39,5 @@ ISR(TIMER0_OVF_vect){
 	}
 	
 	CONT ++;
+	TCNT0 = 255;
 }

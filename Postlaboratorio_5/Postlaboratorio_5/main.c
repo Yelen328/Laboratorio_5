@@ -91,12 +91,11 @@ ISR(ADC_vect)
 			break;
 		
 		case 3:
-			PORTD|= (1<<PORTD6);
-			/*
-			ADMUX &= ~(1<<MUX1);  // Limpiar bit MUX0 primero
+			
+			ADMUX &= ~(1<<MUX1);  // Limpiar bit MUX1 primero
 			ADMUX |= (1<<MUX2)|(1<<MUX0); //Selección de canal Bit 5 del puerto C
 			ADC3=ADCH;
-			updateDutyCycle_3(ADC3); // Actualizar PWM*/
+			DutyCycleLED(ADC3); // Actualizar PWM
 			break;
 			
 		case 4:
