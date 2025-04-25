@@ -457,7 +457,7 @@ void INIT_TMR0(){
 	TCCR0B = (1 << CS01) | (1 << CS00);   //Prescaler 64
  298:	83 e0       	ldi	r24, 0x03	; 3
  29a:	85 bd       	out	0x25, r24	; 37
-	TCNT0 = 255;	//Desborde cada 0.5ms
+	TCNT0 = 255;	
  29c:	8f ef       	ldi	r24, 0xFF	; 255
  29e:	86 bd       	out	0x26, r24	; 38
 	TIMSK0 = (1 << TOIE0);	//Habilitar interrupciones del timer 0
@@ -485,7 +485,6 @@ ISR(TIMER0_OVF_vect){
  2b6:	11 24       	eor	r1, r1
  2b8:	8f 93       	push	r24
  2ba:	9f 93       	push	r25
-	//TCNT0 = 0xB1;	//Desborde cada 0.5ms
 	if (CONT >= limite)
  2bc:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <CONT>
  2c0:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <limite>
